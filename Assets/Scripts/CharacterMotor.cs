@@ -139,7 +139,7 @@ public class CharacterMotor : MonoBehaviour
 
         Physics2D.SyncTransforms();
 
-        if (_rigidBody.position.y == Mathf.CeilToInt(_rigidBody.position.y) && _rigidBody.position.x == Mathf.CeilToInt(_rigidBody.position.x))
+        if (_rigidBody.position.y == Mathf.CeilToInt(_rigidBody.position.y) && _rigidBody.position.x == Mathf.CeilToInt(_rigidBody.position.x) || _currentMoveDirection == Vector2.zero)
         {
             OnAlignedWithGrid?.Invoke();
             if (_currentMoveDirection != _desiredMoveDirection)

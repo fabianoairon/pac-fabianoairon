@@ -1,11 +1,19 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterMotor))]
 public class GhostMove : MonoBehaviour
 {
+    public event Action OnChangeTarget;
+
     CharacterMotor _motor;
     private Vector2 _boxSize;
+    private Vector2 _targetPosition;
 
+    public void SetTargetPosition(Vector2 targetPos)
+    {
+        _targetPosition = targetPos;
+    }
 
     void Start()
     {
@@ -16,8 +24,11 @@ public class GhostMove : MonoBehaviour
 
     private void Motor_OnAlignedWithGrid()
     {
-        var pacman = GameObject.FindGameObjectWithTag("Player").transform;
-
+        ChangeDirection();
+        OnChangeTarget?.Invoke();
+    }
+    private void ChangeDirection()
+    {
         var closestDistance = float.MaxValue;
         Direction finalDirection = Direction.None;
 
@@ -53,9 +64,7 @@ public class GhostMove : MonoBehaviour
     {
         if (CheckIfDirectionIsMovable(direction))
         {
-            var pacman = GameObject.FindGameObjectWithTag("Player").transform;
-
-            var dist = Vector2.Distance(transform.position + offset, pacman.position);
+            var dist = Vector2.Distance(transform.position + offset, _targetPosition);
             if (dist < closestDistance)
             {
                 closestDistance = dist;
