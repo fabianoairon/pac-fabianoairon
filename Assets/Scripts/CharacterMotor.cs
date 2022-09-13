@@ -15,6 +15,10 @@ public class CharacterMotor : MonoBehaviour
 
     public event Action<Direction> OnDirectionChanged;
 
+    public event Action OnAlignedWithGrid;
+
+    public LayerMask LevelGatesLayerMask;
+
     public Direction CurrentMoveDirection
     {
         get
@@ -51,6 +55,7 @@ public class CharacterMotor : MonoBehaviour
     private Vector2 _desiredMoveDirection;
     private Vector2 _currentMoveDirection;
 
+
     private Vector2 _boxSize;
 
     public void SetMovementDirection(Direction newMoveDirection)
@@ -80,11 +85,7 @@ public class CharacterMotor : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxSize = GetComponent<BoxCollider2D>().size;
-    }
-
-    private void Update()
-    {
-
+        LevelGatesLayerMask = LayerMask.GetMask(new string[] { "Level", "Gates" });
     }
 
     private void FixedUpdate()
@@ -140,16 +141,17 @@ public class CharacterMotor : MonoBehaviour
 
         if (_rigidBody.position.y == Mathf.CeilToInt(_rigidBody.position.y) && _rigidBody.position.x == Mathf.CeilToInt(_rigidBody.position.x))
         {
+            OnAlignedWithGrid?.Invoke();
             if (_currentMoveDirection != _desiredMoveDirection)
             {
-                if (!Physics2D.BoxCast(_rigidBody.position, _boxSize, 0, _desiredMoveDirection, 1f, 1 << LayerMask.NameToLayer("Level")))
+                if (!Physics2D.BoxCast(_rigidBody.position, _boxSize, 0, _desiredMoveDirection, 1f, LevelGatesLayerMask))
                 {
                     _currentMoveDirection = _desiredMoveDirection;
                     OnDirectionChanged?.Invoke(CurrentMoveDirection);
                 }
             }
 
-            if (Physics2D.BoxCast(_rigidBody.position, _boxSize, 0, _currentMoveDirection, 1f, 1 << LayerMask.NameToLayer("Level")))
+            if (Physics2D.BoxCast(_rigidBody.position, _boxSize, 0, _currentMoveDirection, 1f, LevelGatesLayerMask))
             {
                 _currentMoveDirection = Vector2.zero;
                 OnDirectionChanged?.Invoke(CurrentMoveDirection);
