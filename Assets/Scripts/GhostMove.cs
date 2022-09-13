@@ -20,42 +20,12 @@ public class GhostMove : MonoBehaviour
 
         var closestDistance = float.MaxValue;
         Direction finalDirection = Direction.None;
-        if (CheckIfDirectionIsMovable(Direction.Up))
-        {
-            var dist = Vector2.Distance(transform.position + Vector3.up, pacman.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                finalDirection = Direction.Up;
-            }
-        }
-        if (CheckIfDirectionIsMovable(Direction.Left))
-        {
-            var dist = Vector2.Distance(transform.position + Vector3.left, pacman.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                finalDirection = Direction.Left;
-            }
-        }
-        if (CheckIfDirectionIsMovable(Direction.Down))
-        {
-            var dist = Vector2.Distance(transform.position + Vector3.down, pacman.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                finalDirection = Direction.Down;
-            }
-        }
-        if (CheckIfDirectionIsMovable(Direction.Right))
-        {
-            var dist = Vector2.Distance(transform.position + Vector3.right, pacman.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                finalDirection = Direction.Right;
-            }
-        }
+
+        UpdateGhostPosition(Direction.Up, Vector3.up, ref closestDistance, ref finalDirection);
+        UpdateGhostPosition(Direction.Left, Vector3.left, ref closestDistance, ref finalDirection);
+        UpdateGhostPosition(Direction.Down, Vector3.down, ref closestDistance, ref finalDirection);
+        UpdateGhostPosition(Direction.Right, Vector3.right, ref closestDistance, ref finalDirection);
+
         _motor.SetMovementDirection(finalDirection);
     }
 
@@ -77,5 +47,20 @@ public class GhostMove : MonoBehaviour
                     && _motor.CurrentMoveDirection != Direction.Left;
         }
         return false;
+    }
+
+    private void UpdateGhostPosition(Direction direction, Vector3 offset, ref float closestDistance, ref Direction finalDirection)
+    {
+        if (CheckIfDirectionIsMovable(direction))
+        {
+            var pacman = GameObject.FindGameObjectWithTag("Player").transform;
+
+            var dist = Vector2.Distance(transform.position + offset, pacman.position);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                finalDirection = direction;
+            }
+        }
     }
 }
