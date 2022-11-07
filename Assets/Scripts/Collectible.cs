@@ -1,16 +1,16 @@
 using System;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class Collectible : MonoBehaviour
 {
     public bool IsVictoryCondition;
     public int Score;
 
-    public event Action<int> OnCollected;
+    public event Action<int, Collectible> OnCollected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnCollected?.Invoke(Score);
+        OnCollected?.Invoke(Score, this);
         Destroy(gameObject);
     }
 }

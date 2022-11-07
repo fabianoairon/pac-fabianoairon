@@ -14,8 +14,8 @@ public class CharacterMotor : MonoBehaviour
     public float MoveSpeed;
 
     public event Action<Direction> OnDirectionChanged;
-
     public event Action OnAlignedWithGrid;
+    public event Action OnResetPosition;
 
     public LayerMask LevelGatesLayerMask;
 
@@ -55,6 +55,7 @@ public class CharacterMotor : MonoBehaviour
     private Vector2 _desiredMoveDirection;
     private Vector2 _currentMoveDirection;
 
+    private Vector3 _initialPos;
 
     private Vector2 _boxSize;
 
@@ -81,11 +82,22 @@ public class CharacterMotor : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        _desiredMoveDirection = Vector2.zero;
+        _currentMoveDirection = Vector2.zero;
+        transform.position = _initialPos;
+        OnResetPosition?.Invoke();
+    }
+
     private void Start()
     {
+        _desiredMoveDirection = Vector2.zero;
+        _currentMoveDirection = Vector2.zero;
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxSize = GetComponent<BoxCollider2D>().size;
         LevelGatesLayerMask = LayerMask.GetMask(new string[] { "Level", "Gates" });
+        _initialPos = transform.position;
     }
 
     private void FixedUpdate()
@@ -160,4 +172,6 @@ public class CharacterMotor : MonoBehaviour
 
         _rigidBody.MovePosition(_rigidBody.position + _currentMoveDirection * moveDistance);
     }
+
+
 }

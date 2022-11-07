@@ -6,13 +6,28 @@ public class GhostMove : MonoBehaviour
 {
     public event Action OnChangeTarget;
 
-    CharacterMotor _motor;
+    private CharacterMotor _motor;
     private Vector2 _boxSize;
     private Vector2 _targetPosition;
 
     public void SetTargetPosition(Vector2 targetPos)
     {
         _targetPosition = targetPos;
+    }
+
+    public void ResetPos()
+    {
+        _motor.ResetPosition();
+    }
+
+    public void StopMoving()
+    {
+        _motor.enabled = false;
+    }
+
+    public void StartMoving()
+    {
+        _motor.enabled = true;
     }
 
     void Start()
