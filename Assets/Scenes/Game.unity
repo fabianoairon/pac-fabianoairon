@@ -209,30 +209,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0550df4d52125bf43b5e35b6971d974a, type: 3}
---- !u!1 &370026956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3606565087879809726, guid: ec7abb1ac6ef8af4899fe1e11593106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &370026960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370026956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f08816d7cdcf8479191b2d9788fa14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GOLives:
-  - {fileID: 1867040087}
-  - {fileID: 1901625558}
-  - {fileID: 2143511320}
-  - {fileID: 751484588}
-  - {fileID: 937766271}
 --- !u!1001 &501019502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,12 +658,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &751484588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4273103445677436167, guid: ec7abb1ac6ef8af4899fe1e11593106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &904229021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,24 +727,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
---- !u!1 &937766271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4273103446209738308, guid: ec7abb1ac6ef8af4899fe1e11593106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1582999479 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7950680409046848694, guid: f126721da5c98d646b9793f201c46ada,
-    type: 3}
-  m_PrefabInstance: {fileID: 7786777576430502602}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8410f677c0e1bf24a9f71cfc0b33f041, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1660384589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -844,18 +796,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799d3ec5443fc934982d83954d10e5af, type: 3}
---- !u!1 &1867040087 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3606565087231418445, guid: ec7abb1ac6ef8af4899fe1e11593106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1901625558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4273103446359362541, guid: ec7abb1ac6ef8af4899fe1e11593106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006551753
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,12 +842,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartupTime: 4
   LifeLostTimer: 3
---- !u!1 &2143511320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4273103445283768647, guid: ec7abb1ac6ef8af4899fe1e11593106c,
+--- !u!114 &2007407469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8148944127043066346, guid: c0a9a202f8db7fc4c8fb621fd9cc6948,
     type: 3}
-  m_PrefabInstance: {fileID: 3606565088126076225}
+  m_PrefabInstance: {fileID: 4676070523374552632}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34c44029f405af43a52611ef33bd294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3606565088126076225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -919,6 +865,10 @@ PrefabInstance:
       propertyPath: AudioSource
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1831096059, guid: ec7abb1ac6ef8af4899fe1e11593106c, type: 3}
+      propertyPath: BlinkTilemapColor
+      value: 
+      objectReference: {fileID: 2007407469}
     - target: {fileID: 3606565087231418444, guid: ec7abb1ac6ef8af4899fe1e11593106c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1671,17 +1621,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 659809076, guid: f126721da5c98d646b9793f201c46ada, type: 3}
-      propertyPath: AudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3f1c5bce6e83c434cb87e9847184e6a1, type: 3}
-    - target: {fileID: 659809076, guid: f126721da5c98d646b9793f201c46ada, type: 3}
       propertyPath: AudioSource
       value: 
       objectReference: {fileID: 519420030}
-    - target: {fileID: 659809076, guid: f126721da5c98d646b9793f201c46ada, type: 3}
-      propertyPath: CharacterLife
-      value: 
-      objectReference: {fileID: 1582999479}
     - target: {fileID: 7786777578098180152, guid: f126721da5c98d646b9793f201c46ada,
         type: 3}
       propertyPath: m_Name

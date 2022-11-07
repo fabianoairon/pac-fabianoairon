@@ -118,7 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7366fc5cea9ed14dac421cd8d0d77a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterLife: {fileID: 7950680409046848694}
   Motor: {fileID: 1939466370}
+  AudioSource: {fileID: 0}
+  AudioClip: {fileID: 8300000, guid: 3f1c5bce6e83c434cb87e9847184e6a1, type: 3}
 --- !u!1 &7786777578098180152
 GameObject:
   m_ObjectHideFlags: 0
